@@ -16,5 +16,6 @@ HEADERS += \
     compiler.h \
     compilerexception.h \
     file.h \
-    fileutils.h
+    fileutils.h \
+    fileexception.h
 

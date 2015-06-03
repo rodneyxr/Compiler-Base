@@ -1,6 +1,7 @@
 #include <iostream>
 #include <compiler.h>
 #include <fileutils.h>
+#include <file.h>
 
 /**
  * This application will ensure that a build script will execute without problems due
@@ -14,18 +15,20 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // print out the number of arguments
-//     std::cout << "Number of Args: " << argc << std::endl;
-
-    // print all arguments
-//    for (int i = 0; i < argc; i++) {
-//        std::cout << "argv[" << i << "]: " << argv[i] << std::endl;
-//    }
-
     std::string filename = argv[1];
 
-    Compiler compiler;
-    compiler.compile(filename);
+//    Compiler compiler;
+//    compiler.compile(filename);
+
+    File file(filename);
+    file.open();
+
+    std::string token;
+    while (!(token = file.next()).empty()) {
+        std::cout << token << std::endl;
+    }
+
+    file.close();
 
     system("pause");
     return 0;
